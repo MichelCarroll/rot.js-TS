@@ -113,7 +113,7 @@ declare module ROT.Map {
         width: number;
         height: number;
         constructor();
-        constructor(width: number, height: number);
+        constructor(width?: number, height?: number);
         create();
         create(callback: Function): void;
         getRooms(): ROT.Map.Feature.Room[];
@@ -131,7 +131,7 @@ declare module ROT.Map {
     }
 
     export class Digger extends Dungeon implements IMap {
-        constructor(width: number, height: number, options: any);
+        constructor(width?: number, height?: number, options?: any);
     }
 
     export class DividedMaze extends Dungeon implements IMap {
