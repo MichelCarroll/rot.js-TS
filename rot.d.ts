@@ -33,7 +33,7 @@
     }
 
     export class Display {
-        constructor(options: any);
+        constructor(options?: any);
         clear();
         computeFontSize(availWidth: number, availHeight: number);
         computeSize(availWidth: number, availHeight: number);
@@ -84,7 +84,7 @@
 
     export class Text {
         static measure(str: string, maxWidth: number): number;
-        static tokenize(str: string, maxWidth: number): Array;
+        static tokenize(str: string, maxWidth: number): Array<any>;
     }
 }
 
