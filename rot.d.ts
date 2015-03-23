@@ -1,5 +1,9 @@
 ﻿declare module ROT {
 
+    interface IActor {
+        act();
+    }
+
     interface IFOV {
         compute(x: number, y: number, R: number, callback: (x: number, y: number, r: number) => void );
     }
@@ -46,6 +50,13 @@
         setOptions(options: any);
     }
 
+    export class Engine {
+        constructor(scheduler:ROT.Scheduler);
+        start();
+        lock();
+        unlock();
+    }
+
     export class Lighting {
         constructor(reflectivityCallback: (x: number, y: number) => void, options: any);
         compute(lightingCallback: (x: number, y: number, color: number) => void );
@@ -68,7 +79,7 @@
     }
 
     export class Scheduler {
-        add(item: any);
+        add(item: IActor, repeat?: boolean);
         clear();
         next(): any;
         remove(item: any);
@@ -86,6 +97,12 @@
         static measure(str: string, maxWidth: number): number;
         static tokenize(str: string, maxWidth: number): Array<any>;
     }
+}
+
+declare module ROT.Scheduler {
+    export class Simple extends ROT.Scheduler { }
+    export class Speed extends ROT.Scheduler { }
+    export class Action extends ROT.Scheduler { }
 }
 
 declare module ROT.FOV {
